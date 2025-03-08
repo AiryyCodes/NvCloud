@@ -1,0 +1,5 @@
+{
+    "workspace.library": ["C:/Program Files/Neovim/share/nvim/runtime"],
+    "diagnostics.globals": ["vim"],
+    "workspace.checkThirdParty": false
+  }
