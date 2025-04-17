@@ -6,9 +6,10 @@ telescope.setup({
         border = {},
         -- borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
         file_ignore_patterns = {
-            "node_modules",
-            "build",
-            "out",
+            "node_modules/",
+            "build/",
+            "out/",
+            "ext/"
         },
     },
 })
