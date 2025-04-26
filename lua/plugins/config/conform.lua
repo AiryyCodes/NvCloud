@@ -1,3 +1,4 @@
+--[[
 local conform = require "conform"
 
 conform.setup({
@@ -13,3 +14,4 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     conform.format({ bufnr = args.buf })
   end,
 })
+]]
