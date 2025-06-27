@@ -10,6 +10,8 @@ return {
 				"build/",
 				"out/",
 				"ext/",
+				"Deps/",
+				"target/",
 			},
 		},
 	},

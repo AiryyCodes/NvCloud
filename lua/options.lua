@@ -1,5 +1,6 @@
 local opt = vim.opt
 local g = vim.g
+local o = vim.o
 
 g.mapleader = " "
 g.maplocalleader = "\\"
@@ -16,4 +17,7 @@ opt.termguicolors = true
 -- Enable line numbers
 opt.number = true
 
-opt.clipboard = 'unnamedplus'
+opt.clipboard = "unnamedplus"
+
+o.backupcopy = "yes"
+

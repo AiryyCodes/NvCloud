@@ -4,7 +4,7 @@ return {
 		dependencies = {
 			"neovim/nvim-lspconfig",
 		},
-        config = true,
+		config = true,
 		opts = {
 			ui = {
 				icons = {
@@ -17,20 +17,45 @@ return {
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
-        version = "1.23.0",
+		version = "1.23.0",
 		dependencies = {
 			"neovim/nvim-lspconfig",
-            "williamboman/mason.nvim",
+			"williamboman/mason.nvim",
 		},
-        opts = {
+		opts = {
 			ensure_installed = { "lua_ls" },
-            handlers = {
+			handlers = {
 				function(server)
 					local lspconfig = require("lspconfig")
 					local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+					if server == "tsserver" then
+						server = "ts_ls"
+					end
+
+					if server == "omnisharp" then
+						lspconfig[server].setup({
+							capabilities = capabilities,
+							server_capabilities = {
+								documentFormattingProvider = false,
+							},
+							cmd = {
+								"omnisharp",
+								"--languageserver",
+								"--hostPID",
+								tostring(vim.fn.getpid()),
+							},
+							root_dir = function(name)
+								local primary = require("lspconfig").util.root_pattern("*.sln")(name)
+								local fallback = require("lspconfig").util.root_pattern("*.csproj")(name)
+								return primary or fallback
+							end,
+						})
+						return
+					end
+
 					lspconfig[server].setup({
-					    capabilities = capabilities,
+						capabilities = capabilities,
 					})
 				end,
 			},
