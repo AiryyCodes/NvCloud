@@ -9,6 +9,7 @@ return {
 				lua = { "stylua" },
 				c = { "clang-format" },
 				cpp = { "clang-format" },
+				arduino = { "clang-format" },
 				javascript = { "prettier" },
 				javascriptreact = { "prettier" },
 				typescript = { "prettier" },
@@ -22,6 +23,9 @@ return {
 					args = { "format", "$FILENAME" },
 					stdin = false,
 				},
+			},
+			format_on_save = {
+				lsp_fallback = true,
 			},
 		})
 

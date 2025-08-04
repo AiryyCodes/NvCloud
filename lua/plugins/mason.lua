@@ -54,6 +54,22 @@ return {
 						return
 					end
 
+					if server == "arduino_language_server" then
+						lspconfig[server].setup({
+							capabilities = capabilities,
+							cmd = { "arduino-language-server", "--fqbn", "arduino:avr:micro" },
+							on_attach = function(client, bufnr)
+								local opts = { buffer = bufnr }
+								vim.api.nvim_buf_set_option(bufnr, "expandtab", true)
+								vim.api.nvim_buf_set_option(bufnr, "shiftwidth", 4)
+								vim.api.nvim_buf_set_option(bufnr, "tabstop", 4)
+								vim.api.nvim_buf_set_option(bufnr, "softtabstop", 4)
+								vim.api.nvim_buf_set_option(bufnr, "smartindent", true)
+							end,
+						})
+						return
+					end
+
 					lspconfig[server].setup({
 						capabilities = capabilities,
 					})

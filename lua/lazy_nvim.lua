@@ -44,6 +44,6 @@ vim.list_extend(plugins, get_plugin_specs())
 
 require("lazy").setup({
 	spec = plugins,
-	install = { colorscheme = { "onedark" } },
+	install = { colorscheme = { "catppuccin-mocha" } },
 	checker = { enabled = true },
 })
